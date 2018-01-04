@@ -1,0 +1,20 @@
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.markdown-content hr{
+  height: 4px;
+  margin: 24px 0;
+  background-color: #bdc3ca;
+  border: 0;
+}
+.markdown-content blockquote {
+  border-left: 5px solid #d8d7d5;
+  padding-left: 16px;
+  margin-left: 20px;
+}
