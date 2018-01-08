@@ -7,7 +7,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-.markdown-content hr{
+
+.summary-section img {
+  display: block;
+  margin: auto;
+}
+.markdown-content hr {
   height: 4px;
   margin: 24px 0;
   background-color: #bdc3ca;

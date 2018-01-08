@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DatePicker, Button, Layout, Menu, Breadcrumb, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
-import NavOneCom from './component/oneLevelComponent/navOneCom';
+import NavSummarySection from './component/navSection/NavSummarySection';
 import CollapseComponent from './component/collapse';
 import FrontHistoryComponent from './component/front-end-history';
 
@@ -18,7 +18,7 @@ class LayoutCom extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            oneLevelContent: "one-level-nav-1"
+            navSection: "nav-summary-action"
         };
 
         this.oneNavChange = this.oneNavChange.bind(this);
@@ -28,7 +28,7 @@ class LayoutCom extends Component {
     oneNavChange({key}) {
         this.setState({
             ...this.state,
-            oneLevelContent: key
+            navSection: key
         });
         console.log('one nav change:',key)
     }
@@ -47,9 +47,9 @@ class LayoutCom extends Component {
                     onSelect={this.oneNavChange}
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['one-level-nav-1']}
+                    defaultSelectedKeys={['nav-summary-action']}
                     style={{ lineHeight: '64px' }}>
-                  <Menu.Item key="one-level-nav-1">nav one</Menu.Item>
+                  <Menu.Item key="nav-summary-action">Summary</Menu.Item>
                   <Menu.Item key="one-level-nav-2">nav two</Menu.Item>
                   <Menu.Item key="one-level-nav-3">nav three</Menu.Item>
                 </Menu>
@@ -57,7 +57,7 @@ class LayoutCom extends Component {
 
               <Content style={{ padding: '0 50px' }}>
 
-                  {this.state.oneLevelContent === 'one-level-nav-1' ? <NavOneCom/> :
+                  {this.state.navSection === 'nav-summary-action' ? <NavSummarySection/> :
                       <div>
                           <Breadcrumb style={{ margin: '16px 0' }}>
                               <Breadcrumb.Item>Home</Breadcrumb.Item>
