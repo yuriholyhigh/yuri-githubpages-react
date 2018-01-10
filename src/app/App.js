@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
-import { DatePicker, Button, Layout, Menu, Breadcrumb, Icon } from 'antd';
+import {Layout, Menu, Breadcrumb, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
-import NavSummarySection from './component/navSection/NavSummarySection';
-import CollapseComponent from './component/collapse';
-import FrontHistoryComponent from './component/front-end-history';
+import NavSummarySection from './component/navSection/summary/NavSummarySection';
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 
-
-
-
-
-class LayoutCom extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            navSection: "nav-summary-action"
+            navSection: "nav-summary-section"
         };
 
         this.oneNavChange = this.oneNavChange.bind(this);
-        this.handleOptionClick = this.handleOptionClick.bind(this);
     }
 
     oneNavChange({key}) {
@@ -31,11 +24,6 @@ class LayoutCom extends Component {
             navSection: key
         });
         console.log('one nav change:',key)
-    }
-
-    handleOptionClick(a) {
-        console.log('option on select ',a);
-        //this.setState({...this.state});
     }
 
     render() {
@@ -47,18 +35,34 @@ class LayoutCom extends Component {
                     onSelect={this.oneNavChange}
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['nav-summary-action']}
+                    defaultSelectedKeys={['nav-summary-section']}
                     style={{ lineHeight: '64px' }}>
-                  <Menu.Item key="nav-summary-action">Summary</Menu.Item>
-                  <Menu.Item key="one-level-nav-2">nav two</Menu.Item>
-                  <Menu.Item key="one-level-nav-3">nav three</Menu.Item>
+                  <Menu.Item key="nav-summary-section">Summary</Menu.Item>
+                  <Menu.Item key="nav-html-section">HTML</Menu.Item>
+                  <Menu.Item key="nav-css-section">CSS</Menu.Item>
+                  <Menu.Item key="nav-js-section">Javascript</Menu.Item>
+                  <Menu.Item key="nav-project-section">工程化与自动化</Menu.Item>
+                  <Menu.Item key="nav-crossDomain-section">跨域及安全</Menu.Item>
+                  <Menu.Item key="nav-others-section">其他</Menu.Item>
                 </Menu>
               </Header>
 
               <Content style={{ padding: '0 50px' }}>
+                  {
+                      (() => {
+                          switch (this.state.navSection) {
+                              case 'nav-summary-section':
+                                  return <NavSummarySection/>;
+                              case 'nav-html-section':
+                                  return 1;
+                              default:
+                                  return "default";
+                          }
+                      })()
+                  }
 
-                  {this.state.navSection === 'nav-summary-action' ? <NavSummarySection/> :
-                      <div>
+                  {
+                      false && <div>
                           <Breadcrumb style={{ margin: '16px 0' }}>
                               <Breadcrumb.Item>Home</Breadcrumb.Item>
                               <Breadcrumb.Item>List</Breadcrumb.Item>
@@ -71,8 +75,7 @@ class LayoutCom extends Component {
                                       defaultSelectedKeys={['3']}
                                       defaultOpenKeys={['sub1']}
                                       style={{ height: '100%' }}
-                                      onOpenChange={(openedSubArray)=>{console.log(openedSubArray)}}
-                                      onSelect={this.handleOptionClick}>
+                                      onOpenChange={(openedSubArray)=>{console.log(openedSubArray)}}>
 
                                       <SubMenu key="sub1" onTitleClick={(a)=>{console.log('onTitleClick')}} title={<span><Icon type="user" />subnav 1</span>}>
                                           <Menu.Item key="1" disabled={true}>option1</Menu.Item>
@@ -98,30 +101,17 @@ class LayoutCom extends Component {
                               </Sider>
 
                               <Content style={{ padding: '0 24px', minHeight: 280 }}>
-                                  <FrontHistoryComponent />
                                   <hr/>
-                                  {this.state.count}
-                                  <DatePicker />
-                                  <Button type="primary">Primary</Button>
-                                  <CollapseComponent />
                               </Content>
                           </Layout>
                       </div>
                   }
 
               </Content>
-              <Footer style={{ textAlign: 'center' }}>
-                Ant Design ©2016 Created by Ant UED
-              </Footer>
+              <Footer style={{ textAlign: 'center' }}>Ant Design ©2016 Created by Ant UED</Footer>
             </Layout>
         );
     }
 }
-
-const App = ()=> (
-    <div className="App">
-        <LayoutCom/>
-    </div>
-);
 
 export default App;
