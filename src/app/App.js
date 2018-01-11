@@ -8,6 +8,7 @@ import NavCSSSection from './component/navSection/css/NavCSSSection';
 import NavJsSection from './component/navSection/js/NavJsSection';
 import NavProjectSection from './component/navSection/project/NavProjectSection';
 import NavCrossSection from './component/navSection/crossDomain/NavCrossdomainSection';
+import NavOthersSection from './component/navSection/others/NavOthersSection';
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -48,7 +49,7 @@ class App extends Component {
                   <Menu.Item key="nav-js-section">Javascript</Menu.Item>
                   <Menu.Item key="nav-project-section">工程化与自动化</Menu.Item>
                   <Menu.Item key="nav-crossDomain-section">跨域及安全</Menu.Item>
-                  <Menu.Item key="nav-others-section" disabled={true}>其他</Menu.Item>
+                  <Menu.Item key="nav-others-section">其他</Menu.Item>
                 </Menu>
               </Header>
 
@@ -68,6 +69,8 @@ class App extends Component {
                                   return <NavProjectSection/>;
                               case 'nav-crossDomain-section':
                                   return <NavCrossSection/>;
+                              case 'nav-others-section':
+                                  return <NavOthersSection/>;
                               default:
                                   return "default";
                           }
