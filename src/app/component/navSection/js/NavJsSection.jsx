@@ -36,8 +36,8 @@ class NavJsSection extends Component {
                             style={{ height: '100%' }}
                             onSelect={this.changeSubSection}>
                             <Menu.Item key="JS基础">JS基础</Menu.Item>
-                            <Menu.Item key="库/框架" disabled={true}>库/框架</Menu.Item>
-                            <Menu.Item key="JS预处理">JS预处理</Menu.Item>
+                            <Menu.Item key="库/框架">库/框架</Menu.Item>
+                            <Menu.Item key="JS预处理" disabled={true}>JS预处理</Menu.Item>
                         </Menu>
                     </Sider>
 
