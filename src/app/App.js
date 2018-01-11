@@ -3,6 +3,11 @@ import {Layout, Menu, Breadcrumb, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 import NavSummarySection from './component/navSection/summary/NavSummarySection';
+import NavHtmlSection from './component/navSection/html/NavHtmlSection';
+import NavCSSSection from './component/navSection/css/NavCSSSection';
+import NavJsSection from './component/navSection/js/NavJsSection';
+import NavProjectSection from './component/navSection/project/NavProjectSection';
+import NavCrossSection from './component/navSection/crossDomain/NavCrossdomainSection';
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -43,7 +48,7 @@ class App extends Component {
                   <Menu.Item key="nav-js-section">Javascript</Menu.Item>
                   <Menu.Item key="nav-project-section">工程化与自动化</Menu.Item>
                   <Menu.Item key="nav-crossDomain-section">跨域及安全</Menu.Item>
-                  <Menu.Item key="nav-others-section">其他</Menu.Item>
+                  <Menu.Item key="nav-others-section" disabled={true}>其他</Menu.Item>
                 </Menu>
               </Header>
 
@@ -54,7 +59,15 @@ class App extends Component {
                               case 'nav-summary-section':
                                   return <NavSummarySection/>;
                               case 'nav-html-section':
-                                  return 1;
+                                  return <NavHtmlSection/>;
+                              case 'nav-css-section':
+                                  return <NavCSSSection/>;
+                              case 'nav-js-section':
+                                  return <NavJsSection/>;
+                              case 'nav-project-section':
+                                  return <NavProjectSection/>;
+                              case 'nav-crossDomain-section':
+                                  return <NavCrossSection/>;
                               default:
                                   return "default";
                           }

@@ -1,8 +1,8 @@
 import React from 'react';
 import CodeBlock from '../../../common/code-block';
-import markdownFile from '../../../../content/history.md';
+import markdownFile from '../../../../content/JSP.md';
 
-const FrontHistoryComponent = ()=> {
+const Framework = ()=> {
     const ReactMarkdown = require('react-markdown');
 
     return (
@@ -12,4 +12,4 @@ const FrontHistoryComponent = ()=> {
     );
 };
 
-export default FrontHistoryComponent;
+export default Framework;

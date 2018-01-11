@@ -1,25 +1,16 @@
 import React, {Component} from 'react';
-import img from '../../images/frontMind.png';
 import {Layout, Breadcrumb, Menu} from 'antd';
-import FrontHistoryComponent from '../front-end-history';
+import Basic from './subNavSection/basic';
+import Framework from './subNavSection/framework';
+import Prefix from './subNavSection/prefix';
 
 const {Content, Sider } = Layout;
 
-const OverviewComponent = ()=> {
-    return (
-        <div>
-            <img src={img} alt="img" />
-        </div>
-    );
-};
-
-
-class NavSummarySection extends Component {
+class NavJsSection extends Component {
     constructor(props) {
         super(props);
-        console.log(typeof this);
         this.state = {
-            subSection: 'Overview'
+            subSection: 'JS基础'
         };
         this.changeSubSection = this.changeSubSection.bind(this);
     }
@@ -34,28 +25,31 @@ class NavSummarySection extends Component {
         return (
             <div className="summary-section">
                 <Breadcrumb style={{ margin: '16px 0' }}>
-                    <Breadcrumb.Item>Summary</Breadcrumb.Item>
-                    <Breadcrumb.Item>Overview</Breadcrumb.Item>
+                    <Breadcrumb.Item>Javescript</Breadcrumb.Item>
+                    <Breadcrumb.Item>{this.state.subSection}</Breadcrumb.Item>
                 </Breadcrumb>
                 <Layout style={{ padding: '24px 0', background: '#fff' }}>
                     <Sider style={{ background: '#fff' }} >
                         <Menu
                             mode="inline"
-                            defaultSelectedKeys={['Overview']}
+                            defaultSelectedKeys={['JS基础']}
                             style={{ height: '100%' }}
                             onSelect={this.changeSubSection}>
-                            <Menu.Item key="Overview">Overview</Menu.Item>
-                            <Menu.Item key="History">History</Menu.Item>
+                            <Menu.Item key="JS基础">JS基础</Menu.Item>
+                            <Menu.Item key="库/框架" disabled={true}>库/框架</Menu.Item>
+                            <Menu.Item key="JS预处理">JS预处理</Menu.Item>
                         </Menu>
                     </Sider>
 
                     <Content style={{ padding: '0 24px', minHeight: 280 }}>
                         {(()=> {
                             switch (this.state.subSection) {
-                                case 'Overview':
-                                    return <OverviewComponent/>;
-                                case 'History':
-                                    return <FrontHistoryComponent/>;
+                                case 'JS基础':
+                                    return <Basic/>;
+                                case '库/框架':
+                                    return <Framework/>;
+                                case 'JS预处理':
+                                    return <Prefix/>;
                                 default:
                                     return <div>no such component.</div>
                             }
@@ -67,4 +61,4 @@ class NavSummarySection extends Component {
     }
 }
 
-export default NavSummarySection;
+export default NavJsSection;
